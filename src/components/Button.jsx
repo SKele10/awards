@@ -1,4 +1,4 @@
-const Button = ({ id, containerClass, title, leftIcon }) => {
+const Button = ({ id, containerClass, title, leftIcon, rightIcon }) => {
   return (
     <button
       id={id}
@@ -8,6 +8,7 @@ const Button = ({ id, containerClass, title, leftIcon }) => {
       <span className="relative inline-flex overflow-hidden font-general text-xs uppercase">
         <div>{title}</div>
       </span>
+      {rightIcon}
     </button>
   );
 };
