@@ -13,14 +13,12 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
 
-  const totalVideos = 3;
+  const totalVideos = 4;
   const nextVideoRef = useRef(null);
-
-  const upcomingVideoIndex = (currentIndex % totalVideos) + 1;
 
   const handleMiniVdClick = () => {
     setHasClicked(true);
-    setCurrentIndex(upcomingVideoIndex);
+    setCurrentIndex((prev) => (prev % totalVideos) + 1);
   };
 
   const handleVideoLoad = () => {
@@ -102,7 +100,7 @@ const Hero = () => {
             >
               <video
                 ref={nextVideoRef}
-                src={getVideoSrc(upcomingVideoIndex)}
+                src={getVideoSrc((currentIndex % totalVideos) + 1)}
                 loop
                 muted
                 id="current-video"
@@ -123,7 +121,6 @@ const Hero = () => {
           />
 
           <video
-            ref={nextVideoRef}
             src={getVideoSrc(
               currentIndex === totalVideos - 1 ? 1 : currentIndex,
             )}
